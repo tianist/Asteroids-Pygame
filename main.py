@@ -6,6 +6,7 @@ from player import Player
 def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
+    dt = 0
     player = Player(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
     running = True
     while running:
@@ -15,8 +16,9 @@ def main():
         log_state()
         screen.fill((0, 0, 0))
         player.draw(screen)
+        player.update(dt)
         pygame.display.flip()
-        clock.tick(60)
+        dt = clock.tick(60)
     pygame.quit()
 
 if __name__ == "__main__":
